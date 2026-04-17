@@ -5,30 +5,73 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Uploader</title>
-
-    <!-- Style -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="card-container">
-      <div class="card-header">
-        <div class="card-title">Upload your image</div>
-        <div class="card-tip">File should be Jpeg, Png...</div>
-      </div>
+    <main class="page">
+      <section class="card-container">
+        <header class="card-header">
+          <h1 class="card-title">Upload your image</h1>
+          <p class="card-tip">File should be JPG, PNG, WEBP or GIF</p>
+        </header>
 
-      <div class="card-upload-section">
-        <div class="card-placeholder-img">
-          <img id="image-item" src="./image.svg" />
+        <div
+          class="card-upload-section"
+          id="dropArea"
+          tabindex="0"
+          role="button"
+          aria-label="Upload image by clicking or dragging and dropping"
+        >
+          <input
+            type="file"
+            id="fileInput"
+            class="file-input"
+            accept="image/png, image/jpeg, image/webp, image/gif"
+          />
+
+          <div class="upload-content" id="uploadContent">
+            <div class="card-placeholder-img" aria-hidden="true">
+              <svg
+                width="80"
+                height="60"
+                viewBox="0 0 80 60"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect x="4" y="4" width="72" height="52" rx="10" fill="#EAF2FF" />
+                <path
+                  d="M18 42L28 31L36 38L49 24L62 42H18Z"
+                  fill="#97BEF4"
+                />
+                <circle cx="28" cy="20" r="5" fill="#B3D4FF" />
+              </svg>
+            </div>
+
+            <p class="card-placeholder-tip">
+              Drag & Drop image here
+            </p>
+            <p class="card-sub-tip">or click to browse</p>
+          </div>
+
+          <div class="preview hidden" id="previewBox">
+            <img id="previewImage" class="preview-image" alt="Uploaded preview" />
+          </div>
         </div>
-        <div class="card-placeholder-tip">Drag & Drop image Here</div>
-      </div>
 
-      <div class="card-footer">
-        <div class="card-tip">Or</div>
-        <div class="footer-button">Choose a file</div>
-      </div>
-    </div>
+        <div class="file-details" id="fileDetails">
+          <p class="file-name hidden" id="fileName"></p>
+          <p class="message" id="message" aria-live="polite"></p>
+        </div>
 
-    <script src="./script.js"></script>
+        <footer class="card-footer">
+          <label for="fileInput" class="footer-button">Choose a file</label>
+          <button type="button" class="remove-button hidden" id="removeButton">
+            Remove image
+          </button>
+        </footer>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
   </body>
 </html>
